@@ -97,6 +97,7 @@
   background-color: beige;
   padding: 20px;
   margin: 1% 1% 1% 0%;
+  overflow-y: auto;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -139,7 +140,9 @@
     flex-direction: column;
     overflow: auto;
   }
-
+  .aside{
+    margin: 0% 1% 1% 1%;
+  }
   .content {
     overflow-y: visible; /* Remove overflow-y property */
     box-shadow: none; /* Remove box-shadow if needed */
