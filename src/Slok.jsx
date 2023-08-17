@@ -56,6 +56,7 @@ function SlokList ()  {
     setChapter(newChapter);
     setSloka(1);
     setslokLeft(false);
+    setslokRight(false);
 
 
   };
