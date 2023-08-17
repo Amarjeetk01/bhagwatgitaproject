@@ -6,6 +6,12 @@
   font-family: 'Bricolage Grotesque', sans-serif;
 }
 
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -40,6 +46,7 @@
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
   text-align: justify;
   text-justify: inter-word;
+  border-radius: 2%;
 }
 
 .content img {
@@ -93,6 +100,7 @@
 }
 
 .aside {
+  border-radius: 2%;
   flex: 1;
   background-color: beige;
   padding: 20px;
@@ -100,6 +108,19 @@
   overflow-y: auto;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.authorContent{
+  border-radius: 2%;
+  flex: 1;
+  background-color: rgb(244, 244, 228);
+  padding: 20px;
+  margin: 1% 1% 1% 0%;
+  overflow-y: auto;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
 
 .blog-ch h1 {
   text-align: center;
@@ -114,13 +135,15 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-.ch-n-p {
+.buttonContainer {
   display: flex;
-  justify-content: space-between;
-  margin: 20px;
+  align-items: center; 
 }
 
+
+Button{
+  margin: 1px;
+}
 .footer {
   background-color: #333;
   color: white;
@@ -142,10 +165,11 @@
   }
   .aside{
     margin: 0% 1% 1% 1%;
+    overflow-y: visible;
   }
   .content {
     overflow-y: visible; /* Remove overflow-y property */
-    box-shadow: none; /* Remove box-shadow if needed */
+    /* box-shadow: none;  */
   }
 
   .content img {
@@ -154,6 +178,8 @@
     left: 0;
   }
 }
+
+
 
 
 

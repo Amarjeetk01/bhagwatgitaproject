@@ -1,7 +1,8 @@
 import React from "react";
 import './App.css';
 import Blog from "./Blog";
-import Slok from "./Slok";
+import SlokList from "./Slok";
+
 const Home = () => {
     return (
         <>
@@ -12,7 +13,10 @@ const Home = () => {
                     <img src="/shreekrishna.png" alt="Krishna"></img>
                     <Blog></Blog>
                     </div>
-                    <div className="aside"> <Slok></Slok></div>
+                    <div className="aside">
+                     <SlokList></SlokList>
+                     
+                     </div>
                 </div>
                 <div className="footer">This project is created using the BhagavadGitaApi.</div>
             </div>

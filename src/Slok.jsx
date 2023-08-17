@@ -1,102 +1,167 @@
 import React, { useEffect, useState, useCallback } from "react";
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import Spinner from "./Spinner";
-import './App.css';
 
 
+const excludedKeys = ["_id", "chapter", "verse", "slok", "transliteration"];
 
-const Slok = () => {
-    const [chapter, setChapter] = useState(1);
-    const [loading, setLoading] = useState(false);
-    const [chapterData, setChapterData] = useState({
-        slok: "",
-        translationtej: "",
-        translationsiva: "",
-    });
-    const [sloka,setSloka]=useState(1);
-    const fetchData = useCallback(async () => {
-        setLoading(true);
-        const url = 'https://bhagavadgitaapi.in/slok/';
-        const newUrl = `${url}${chapter}/${sloka}`;
-        try {
-            const response = await fetch(newUrl);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            setChapterData({
-                slok: data.slok,
-                translationtej: data.tej.ht,
-                translationsiva: data.siva.et,               
-            });
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        } finally {
-            setLoading(false);
-        }
-    }, [chapter,sloka]);
+function SlokList ()  {
 
-    useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+  const [chapterLeft, setChapterLeft] = useState(false);
+  const [chapterRight, setChapterRight] = useState(true);
+  const [slokLeft, setslokLeft] = useState(false);
+  const [slokRight, setslokRight] = useState(true);
+  const [chapter, setChapter] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [chapterData, setChapterData] = useState({
+    slok: "",
+    translation: "",
+    object: '',
+  });
+  const [sloka, setSloka] = useState(1);
+  const [visibleSections, setVisibleSections] = useState([]);
 
-    const chapterHandling = () => {
-        let newChapter = chapter + 1;
-        if (newChapter > 18) {
-            alert("Chapter not found!");
-            newChapter = 1;
-        }
-        setChapter(newChapter);
-    };
-
-    const chapterHandlingD = () => {
-        let newChapter = chapter - 1;
-        if (newChapter < 1) {
-            alert("Chapter cannot be negative");
-            newChapter = 1;
-        }
-        setChapter(newChapter);
-    }
-    const slokHandling = () => {
-        let newslok = sloka + 1;
-            
-        setSloka(newslok);
-    };
-
-    const slokHandlingD = () => {
-        let newslok = sloka - 1;
-        if (newslok < 1) {
-            alert("Slok no. cannot be negative");
-            newslok = 1;
-        }
-        setSloka(newslok);
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    const url = `./Data/sloka/${chapter}/${sloka}`;
+    try {
+      const jsonData = await require(`${url}/index.json`);
+      setChapterData({
+        object: jsonData,
+        slok: jsonData.slok,
+        translation: jsonData.transliteration,
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
     }
 
-    return (
-        <div>
-            {loading ? (
-                <Spinner />
-            ) : (
-                <div className="blog-ch">
-                    <div className="ch-n-p">
-                    <span clas onClick={chapterHandlingD}> <i class="fa-solid fa-angles-left fa-beat-fade"></i>&#160; </span>
-                    Chapter: {chapter}
-                    <span onClick={chapterHandling} >&#160;<i class="fa-solid fa-angles-right fa-beat-fade"></i></span>
-                    <span onClick={slokHandlingD} > <i class="fa-solid fa-angles-left fa-beat-fade"></i>&#160;</span>
-                    Slok: {sloka}
-                    <span onClick={slokHandling} >&#160;<i class="fa-solid fa-angles-right fa-beat-fade"></i></span>
-                    </div>
-                    <h2 className="blog-ch-p">||श्रीमद्‍भगवद्‍-गीता {chapter}.{sloka}||</h2>
-                    
-                    <div className="summaryBlog">
-                        <b>।। {chapterData.slok} ।।</b>
-                        <div className="long-line"></div>
-                        <p className="summaryBlog">{chapterData.translationtej}</p>
-                        <p className="summaryBlog">{chapterData.translationsiva}</p>
-                    </div>
-                </div>
+  }, [chapter, sloka]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const chapterHandling = () => {
+    setChapterLeft(true);
+    let newChapter = chapter + 1;
+    if (newChapter >= 18) {
+      setChapterRight(false);
+      newChapter = 18;
+    }
+    setChapter(newChapter);
+
+  };
+
+  const chapterHandlingD = () => {
+    setChapterRight(true);
+    let newChapter = chapter - 1;
+    if (newChapter <= 1) {
+      setChapterLeft(false);
+      newChapter = 1;
+    }
+    setChapter(newChapter);
+
+  }
+
+  const slokcount = [47, 72, 43, 42, 29, 47, 30, 28, 34, 42, 55, 20, 35, 27, 20, 24, 28, 78];
+
+  const slokHandling = () => {
+    setslokLeft(true);
+    let newslok = sloka + 1;
+    if(newslok>=slokcount[chapter-1]){
+      setslokRight(false);
+      newslok=slokcount[chapter-1];
+    }
+    setSloka(newslok);
+  };
+
+
+
+
+  const slokHandlingD = () => {
+    setslokRight(true);
+    let newslok = sloka - 1;
+    if (newslok <= 1) {
+      setslokLeft(false);
+      newslok = 1;
+    }
+    setSloka(newslok);
+
+  }
+
+  const toggleSection = (sectionName) => {
+    if (visibleSections.includes(sectionName)) {
+      setVisibleSections(visibleSections.filter((name) => name !== sectionName));
+    } else {
+      setVisibleSections([...visibleSections, sectionName]);
+    }
+  };
+
+
+
+
+  return (
+    <div >
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="blog-ch">
+          <div className="buttonContainer">
+            {chapterLeft && <IconButton onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>}
+            Ch: {chapter}
+            {chapterRight && <IconButton onClick={chapterHandling}><ArrowRightIcon /></IconButton>}
+            {slokLeft && (
+              <IconButton onClick={slokHandlingD}>
+                <ArrowLeftIcon />
+              </IconButton>
             )}
-        </div>
-    );
-};
+            Slok: {sloka}
+            {slokRight && (
+              <IconButton onClick={slokHandling}><ArrowRightIcon /></IconButton>
+            )}
+            
+          </div>
 
-export default Slok;
+          <h2 className="blog-ch-p">||श्रीमद्‍भगवद्‍-गीता {chapter}.{sloka}||</h2>
+          <div className="summaryBlog">
+            <b>।। {chapterData.slok} ।।</b>
+            <div className="long-line"></div>
+          </div>
+
+          <h3>Translation By Different Author</h3>
+          {Object.entries(chapterData.object).map(([sectionName, section]) => (
+            !excludedKeys.includes(sectionName) && (
+
+              <div key={sectionName}>
+
+                <Button size="small" onClick={() => toggleSection(sectionName)}>
+                  {visibleSections.includes(sectionName) ? 'Hide' : 'Show'} {sectionName}
+                </Button>
+                {visibleSections.includes(sectionName) && (
+                  <div className="authorContent">
+                    {/* <h2>{sectionName}</h2> */}
+                    <ul>
+                      {Object.entries(section).map(([contentName, content]) => (
+                        <li key={contentName}>{content}
+                          <div className="long-line"></div>
+                        </li>
+
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default SlokList;

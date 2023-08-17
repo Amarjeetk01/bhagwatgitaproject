@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Spinner from "./Spinner";
 import './App.css';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import jsonData from "./Data/chapters/index.json"
 
 const Blog = () => {
+    const [chapterLeft,setChapterLeft]=useState(false);
+    const [chapterRight,setChapterRight]=useState(true);
     const [chapter, setChapter] = useState(0);
     const [loading, setLoading] = useState(false);
     const [chapterData, setChapterData] = useState({
@@ -38,18 +42,20 @@ const Blog = () => {
     }, [fetchData]);
 
     const chapterHandling = () => {
+        setChapterLeft(true);
         let newChapter = chapter + 1;
         if (newChapter >= jsonData.length) {
-            alert("Chapter not found!");
+            setChapterRight(false);
             newChapter = jsonData.length-1;
         }
         setChapter(newChapter);
     };
 
     const chapterHandlingD = () => {
+        setChapterRight(true);
         let newChapter = chapter - 1;
-        if (newChapter < 0) {
-            alert("Chapter cannot be negative");
+        if (newChapter <= 0) {
+            setChapterLeft(false);
             newChapter = 0;
         }
         setChapter(newChapter);
@@ -60,14 +66,10 @@ const Blog = () => {
             {loading ? (
                 <Spinner />
             ) : (
-                <div className="blog-ch">
-                    <Button variant="text" onClick={chapterHandlingD}>
-                        <i className="fa-solid fa-chevron-left fa-beat-fade"></i>
-                    </Button>
-                    Chapter: {jsonData[chapter].chapter_number}
-                    <Button variant="text" onClick={chapterHandling}>
-                        <i className="fa-solid fa-chevron-right fa-beat-fade"></i>
-                    </Button>
+                <div className="blog-ch">             
+                {chapterLeft ? (<IconButton onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>): (<></>)}
+                Chapter: {jsonData[chapter].chapter_number}
+                    {chapterRight ? (<IconButton onClick={chapterHandling}><ArrowRightIcon /></IconButton>):(<></>)}
                     <h1>{chapterData.name}</h1>
                     <p className="blog-ch-p">{chapterData.meaningHi}</p>
                     <p className="blog-ch-p">{chapterData.meaningEn}</p>
