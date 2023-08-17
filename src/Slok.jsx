@@ -54,6 +54,9 @@ function SlokList ()  {
       newChapter = 18;
     }
     setChapter(newChapter);
+    setSloka(1);
+    setslokLeft(false);
+
 
   };
 
@@ -65,6 +68,9 @@ function SlokList ()  {
       newChapter = 1;
     }
     setChapter(newChapter);
+    setSloka(1);
+    setslokLeft(false);
+
 
   }
 
@@ -112,18 +118,21 @@ function SlokList ()  {
       ) : (
         <div className="blog-ch">
           <div className="buttonContainer">
-            {chapterLeft && <IconButton onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>}
-            Ch: {chapter}
-            {chapterRight && <IconButton onClick={chapterHandling}><ArrowRightIcon /></IconButton>}
-            {slokLeft && (
+            {chapterLeft ? (<IconButton onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>):(<IconButton disabled onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>)}
+            <span>Ch: {chapter}</span>
+            
+            {chapterRight ? (<IconButton  onClick={chapterHandling}><ArrowRightIcon /></IconButton>):(<IconButton disabled onClick={chapterHandling}><ArrowRightIcon /></IconButton>)}
+            {slokLeft ? (
               <IconButton onClick={slokHandlingD}>
                 <ArrowLeftIcon />
               </IconButton>
-            )}
-            Slok: {sloka}
-            {slokRight && (
+            ):(<IconButton disabled onClick={slokHandlingD}>
+                <ArrowLeftIcon />
+              </IconButton>)}
+            <span>Slok: {sloka}</span>
+            {slokRight ? (
               <IconButton onClick={slokHandling}><ArrowRightIcon /></IconButton>
-            )}
+            ):( <IconButton disabled onClick={slokHandling}><ArrowRightIcon /></IconButton>)}
             
           </div>
 

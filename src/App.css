@@ -138,11 +138,12 @@ ul, li {
 .buttonContainer {
   display: flex;
   align-items: center; 
+
 }
 
 
-Button{
-  margin: 1px;
+Button ,span{
+  margin: 2px;
 }
 .footer {
   background-color: #333;
@@ -168,6 +169,7 @@ Button{
     overflow-y: visible;
   }
   .content {
+    margin: 1%;
     overflow-y: visible; /* Remove overflow-y property */
     /* box-shadow: none;  */
   }

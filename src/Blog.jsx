@@ -45,7 +45,7 @@ const Blog = () => {
     const chapterHandling = () => {
         setChapterLeft(true);
         let newChapter = chapter + 1;
-        if (newChapter >= jsonData.length) {
+        if (newChapter >= jsonData.length-1) {
             setChapterRight(false);
             newChapter = jsonData.length-1;
         }
@@ -67,10 +67,12 @@ const Blog = () => {
             {loading ? (
                 <Spinner />
             ) : (
-                <div className="blog-ch">             
-                {chapterLeft ? (<IconButton onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>): (<></>)}
+                <div className="blog-ch">   
+                
+                {chapterLeft ? (<IconButton onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>): (<IconButton disabled onClick={chapterHandlingD}><ArrowLeftIcon /></IconButton>)}
                 Chapter: {jsonData[chapter].chapter_number}
-                    {chapterRight ? (<IconButton onClick={chapterHandling}><ArrowRightIcon /></IconButton>):(<></>)}
+                
+                    {chapterRight ? (<IconButton onClick={chapterHandling}><ArrowRightIcon /></IconButton>):(<IconButton disabled onClick={chapterHandling}><ArrowRightIcon /></IconButton>)}
                     <h1>{chapterData.name}</h1>
                     <p className="blog-ch-p">{chapterData.meaningHi}</p>
                     <p className="blog-ch-p">{chapterData.meaningEn}</p>
