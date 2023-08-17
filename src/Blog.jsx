@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Spinner from "./Spinner";
-import './App.css';
+import "./App.css"
+
 import IconButton from '@mui/material/IconButton';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';

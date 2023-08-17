@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css';
+import "./App.css"
 import Blog from "./Blog";
 import SlokList from "./Slok";
 
