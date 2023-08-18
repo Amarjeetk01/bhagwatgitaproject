@@ -171,7 +171,7 @@ Button ,span{
   .content {
     margin: 1%;
     overflow-y: visible; /* Remove overflow-y property */
-    /* box-shadow: none;  */
+     box-shadow: none;  
   }
 
   .content img {
