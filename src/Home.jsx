@@ -19,7 +19,7 @@ const Home = () => {
                      
                      </div>
                 </div>
-                <div className="footer"><p className="footer-p">This project is created using the BhagavadGitaApi.</p></div>
+                <div className="footer"><span className="footer-p">This project is created using the BhagavadGitaApi.</span></div>
             </div>
         </>
     )
