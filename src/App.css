@@ -152,6 +152,10 @@ Button ,span{
   padding: 20px;
   position: sticky;
   bottom: 0;
+  
+}
+
+.footer-p{
   opacity: 0.5;
 }
 
