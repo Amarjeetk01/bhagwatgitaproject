@@ -152,6 +152,7 @@ Button ,span{
   padding: 20px;
   position: sticky;
   bottom: 0;
+  opacity: 0.5;
 }
 
 /* Responsive styles using media queries */
