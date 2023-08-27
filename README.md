@@ -35,19 +35,32 @@ The Bhagavad Gita Blog App is built using React and features two main components
 
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
-Navigate to the project directory:
+```
+2. Navigate to the project directory:
+```bash
 cd your-repo-name
-Install dependencies:
+```
+3. Install dependencies:
+```bash
 npm install
-Usage
-Run the application:
+```
+## Usage
+Follow these steps to run the Bhagavad Gita Blog App:
+
+### Run the application:
+Start the application using the following command:
+```bash
 npm start
+```
+### Access the App
 Open your web browser and go to http://localhost:3000 to view the app.
-Custom Hooks
+## Custom Hooks
 The useFetchData hook is used to fetch data for the SlokList and Blog components. It handles fetching data for both individual verses and chapter details.
 
-Folder Structure
+## Folder Structure
 The project's folder structure is organized as follows:
+
+```lua
 src/
 |-- components/
 |   |-- Handler.js
@@ -66,3 +79,4 @@ src/
 |-- App.js
 |-- index.js
 |-- ...
+```
