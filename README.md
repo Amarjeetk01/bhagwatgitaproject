@@ -38,7 +38,7 @@ git clone https://github.com/Amarjeetk01/bhagwatgitaproject.git
 ```
 2. Navigate to the project directory:
 ```bash
-cd your-repo-name
+cd bhagwatgitaproject
 ```
 3. Install dependencies:
 ```bash
@@ -69,14 +69,17 @@ src/
 |-- Data/
 |   |-- chapters/
 |   |   |-- index.json
-|   |-- sloka/
-|       |-- [chapter]/
-|           |-- [sloka]/
-|               |-- index.json
+|    |-- [sloka]/
+|        |-- index.json
+|-- page/
+|   |-- chapter/
+|   |   |-- Blog.js
+|   |-- slok/
+|       |-- Slok.js
 |-- slokCompoent/
 |   |-- Transaltion.js
 |-- useFetchData.js
 |-- App.js
 |-- index.js
+|-- Home.js
 |-- ...
-```
