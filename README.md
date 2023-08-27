@@ -34,7 +34,7 @@ The Bhagavad Gita Blog App is built using React and features two main components
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/Amarjeetk01/bhagwatgitaproject.git
 ```
 2. Navigate to the project directory:
 ```bash
