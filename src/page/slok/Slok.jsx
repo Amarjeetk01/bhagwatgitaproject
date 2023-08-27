@@ -87,6 +87,7 @@ function SlokList() {
       ) : (
         <div className="blog-ch">
           <div className="buttonContainer">
+          <div className="handlerCh">
             {chapterLeft ? (
               <PrevHandler onClick={chapterHandlingD} />
             ) : (
@@ -98,6 +99,8 @@ function SlokList() {
             ) : (
               <NextHandler disabled />
             )}
+            </div>
+            <div className="handlerS">
             {slokLeft ? (
               <PrevHandler onClick={slokHandlingD} />
             ) : (<PrevHandler disabled onClick={slokHandlingD} />)}
@@ -105,7 +108,7 @@ function SlokList() {
             {slokRight ? (
               <NextHandler onClick={slokHandling} />
             ) : (<NextHandler disabled onClick={slokHandling} />)}
-
+            </div>
           </div>
 
           <h2 className="blog-ch-p">||श्रीमद्‍भगवद्‍-गीता {chapter}.{sloka}||</h2>

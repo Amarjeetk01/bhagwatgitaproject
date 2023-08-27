@@ -91,8 +91,6 @@ ul, li {
   }
 }
 
-
-
 .long-line {
   height: 2px;
   width: 100%;
@@ -121,25 +119,12 @@ ul, li {
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
 .blog-ch h1 {
   text-align: center;
 }
 
-
-
-
-.buttonContainer {
-  display: flex;
-  align-items: center; 
-
-}
-
-
-Button ,span{
-  margin: 2px;
+Button {
+  margin: 1px;
 }
 .footer {
   background-color: #333;

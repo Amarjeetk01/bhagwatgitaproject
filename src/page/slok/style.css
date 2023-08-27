@@ -1,3 +1,4 @@
+
 .blog-ch-p {
     text-align: center;
     margin: 2px, 0px, 10px, 0px;
@@ -20,4 +21,10 @@
   background-repeat: no-repeat;
   background-position: 45px 0;
   background-size: contain;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center; 
+justify-content: space-between;
 }
