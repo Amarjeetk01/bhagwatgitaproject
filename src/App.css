@@ -1,4 +1,3 @@
-/* Default styles */
 * {
   margin: 0;
   padding: 0;
@@ -47,6 +46,10 @@ ul, li {
   text-align: justify;
   text-justify: inter-word;
   border-radius: 2%;
+  background-image: url("../public/bg1.png");
+  object-fit: cover;
+  object-position: center;
+  background-repeat: no-repeat;
 }
 
 .content img {
@@ -59,37 +62,36 @@ ul, li {
 }
 
 .spinner {
-  width: 70px;
-  height: 70px;
-  background:
-    radial-gradient(farthest-side,#766DF4 90%,#0000) center/16px 16px,
-    radial-gradient(farthest-side,#6F6D91   90%,#0000) bottom/12px 12px;
-  background-repeat: no-repeat;
-  animation: s7 1s infinite linear;
-  position: relative;
-  left: 45%;
-  bottom: 30%;
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;  
+  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+  animation: sk-scaleout 1.0s infinite ease-in-out;
 }
 
-.spinner::before {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  inset: auto 0 16px;
-  margin: auto;
-  background: #E4E4ED;
-  border-radius: 50%;
-  transform-origin: 50% calc(100% + 10px);
-  animation: inherit;
-  animation-duration: 0.5s;
-}
-
-@keyframes s7 {
+@-webkit-keyframes sk-scaleout {
+  0% { -webkit-transform: scale(0) }
   100% {
-    transform: rotate(1turn);
+    -webkit-transform: scale(1.0);
+    opacity: 0;
   }
 }
+
+@keyframes sk-scaleout {
+  0% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 100% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+
 
 .long-line {
   height: 2px;
@@ -126,15 +128,9 @@ ul, li {
   text-align: center;
 }
 
-.blog-ch-p {
-  text-align: center;
-  margin: 2px, 0px, 10px, 0px;
-}
 
-.summaryBlog {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+
+
 .buttonContainer {
   display: flex;
   align-items: center; 
@@ -153,11 +149,41 @@ Button ,span{
   position: sticky;
   bottom: 0;
   
+<<<<<<< HEAD
+}
+
+.footer-p{
+  opacity: 0.5;
+=======
+>>>>>>> ff99042 (updateCode)
 }
 
 .footer-p{
   opacity: 0.5;
 }
+
+
+
+.fade-in{
+
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode:backwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
 
 /* Responsive styles using media queries */
 @media screen and (max-width: 768px) {

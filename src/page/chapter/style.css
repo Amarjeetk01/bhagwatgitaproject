@@ -1,0 +1,25 @@
+.blog-ch-p {
+    text-align: center;
+    margin: 2px, 0px, 10px, 0px;
+  }
+.summaryBlog {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+  }
+
+
+/* 
+.opacity_layer {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(
+        180deg,
+        rgba(4, 21, 45, 0) 0%,
+        #04152d 79.17%
+    );
+    position: absolute;
+    bottom: 0;
+    left: 0;
+} */

@@ -1,0 +1,23 @@
+.blog-ch-p {
+    text-align: center;
+    margin: 2px, 0px, 10px, 0px;
+  }
+  .twitter {
+    margin-left: 5%;
+    cursor: pointer;
+  }
+  
+  .twitter:hover {
+    color:#b56e6e
+  }
+  .summaryBlog {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+.sideImg{
+  background-image: linear-gradient(to right, beige, rgba(214, 183, 183, 0.1)), url("../../../public/bg2.png");
+  /* background-image: url("../../../public/bg2.png"); */
+  background-repeat: no-repeat;
+  background-position: 45px 0;
+  background-size: contain;
+}
