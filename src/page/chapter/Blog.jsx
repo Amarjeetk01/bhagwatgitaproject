@@ -51,7 +51,7 @@ const Blog = () => {
                         <div className="summaryBlog">                            
                                 <p>{data?.summary?.hi}</p>
                                 <div className="long-line"></div>
-                                <p>{data?.summary?.hi}</p>
+                                <p>{data?.summary?.en}</p>
                             </div>
                         </div>
                     </div>                
