@@ -25,9 +25,9 @@ const Blog = () => {
     const chapterHandlingD = () => {
         setChapterRight(true);
         let newChapter = chapter - 1;
-        if (newChapter <= 0) {
+        if (newChapter <= 1) {
             setChapterLeft(false);
-            newChapter = 0;
+            newChapter = 1;
         }
         setAnimation(true);
         setChapter(newChapter);
