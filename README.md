@@ -66,11 +66,6 @@ src/
 |   |-- Handler.js
 |   |-- Spinner.js
 |   |-- ...
-|-- Data/
-|   |-- chapters/
-|   |   |-- index.json
-|    |-- [sloka]/
-|        |-- index.json
 |-- page/
 |   |-- chapter/
 |   |   |-- Blog.js
@@ -79,6 +74,7 @@ src/
 |-- slokCompoent/
 |   |-- Transaltion.js
 |-- useFetchData.js
+|-- useFetchSlok.js
 |-- App.js
 |-- index.js
 |-- Home.js

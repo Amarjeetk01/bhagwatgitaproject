@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
+
 const excludedKeys = ["_id", "chapter", "verse", "slok", "transliteration"];
 
-const Transaltion = (props) => {
+const Translation = (props) => {
   const [visibleSections, setVisibleSections] = useState([]);
 
   const toggleSection = (sectionName) => {
-    if (visibleSections.includes(sectionName)) {
+    if (visibleSections?.includes(sectionName)) {
       setVisibleSections(visibleSections.filter((name) => name !== sectionName));
     } else {
       setVisibleSections([...visibleSections, sectionName]);
@@ -19,27 +20,30 @@ const Transaltion = (props) => {
       toggleSection(sectionName);
     }, delay);
   };
+
+  // Check if props.data is defined before attempting to iterate over it
+  if (!props.data) {
+    return null; // or handle this case accordingly
+  }
+
   return (
     <>
       <h3>Translation By Different Author</h3>
       <div className="sideImg">
-        {Object.entries(props.data).map(([sectionName, section]) => (
+        {Object?.entries(props.data).map(([sectionName, section]) => (
           !excludedKeys.includes(sectionName) && (
-
             <div key={sectionName}>
-
               <Button size="small" onClick={() => toggleSectionWithDelay(sectionName)}>
-                {visibleSections.includes(sectionName) ? 'Hide' : 'Show'} {sectionName}
+                {visibleSections?.includes(sectionName) ? 'Hide' : 'Show'} {sectionName}
               </Button>
-              {visibleSections.includes(sectionName) && (
+              {visibleSections?.includes(sectionName) && (
                 <div className="authorContent">
                   {/* <h2>{sectionName}</h2> */}
                   <ul>
-                    {Object.entries(section).map(([contentName, content]) => (
+                    {Object?.entries(section).map(([contentName, content]) => (
                       <li key={contentName}>{content}
                         <div className="long-line"></div>
                       </li>
-
                     ))}
                   </ul>
                 </div>
@@ -47,9 +51,9 @@ const Transaltion = (props) => {
             </div>
           )
         ))}
-        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default Transaltion;
+export default Translation;

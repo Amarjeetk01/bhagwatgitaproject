@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Spinner from "../../components/Spinner";
 import Transaltion from "./slokCompoent/Transaltion";
 import { PrevHandler, NextHandler } from "../../components/Handler";
-import useFetchData from "../../useFetchData";
+
 import "./style.css";
+import useFetchSlok from "../../useFetchedSlok";
 function SlokList() {
 
 
@@ -15,7 +16,8 @@ function SlokList() {
   const [chapter, setChapter] = useState(1);
   const [animate, setAnimation] = useState(false);
   const [sloka, setSloka] = useState(1);
-  const { loading,data } = useFetchData(chapter, sloka);
+
+  const {loading, data}=useFetchSlok(chapter,sloka);
   
   const chapterHandling = () => {
     setChapterLeft(true);
@@ -73,7 +75,7 @@ function SlokList() {
 
   }
   const tweetNow = () => {
-    let tweet = `https://twitter.com/share?text=%7C%7C%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AE%E0%A4%A6%E0%A5%8D%E0%A4%AD%E0%A4%97%E0%A4%B5%E0%A4%A6%E0%A5%8D%E0%A4%97%E0%A5%80%E0%A4%A4%E0%A4%BE%20%7C%7C%20%0A%20${encodeURIComponent(data.slok)}`;
+    let tweet = `https://twitter.com/share?text=%7C%7C%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AE%E0%A4%A6%E0%A5%8D%E0%A4%AD%E0%A4%97%E0%A4%B5%E0%A4%A6%E0%A5%8D%E0%A4%97%E0%A5%80%E0%A4%A4%E0%A4%BE%20%7C%7C%20%0A%20${encodeURIComponent(data?.slok)}`;
 
     window.open(tweet);
   };
@@ -113,7 +115,7 @@ function SlokList() {
 
           <h2 className="blog-ch-p">||श्रीमद्‍भगवद्‍-गीता {chapter}.{sloka}||</h2>
           <div className={`summaryBlog ${animate ? 'fade-in' : ''}`} onAnimationEnd={onAnimationEnd}>
-            <b>।। {data.slok} ।।</b>
+            <b>।। {data?.slok} ।।</b>
             <span target="_blank" data-size="large" rel="noopener noreferrer" className="twitter" onClick={tweetNow}>
               <i className="fa-brands fa-twitter fa-fade"></i>
             </span>

@@ -6,6 +6,7 @@ import SlokList from "./page/slok/Slok";
 
 
 const Home = () => {
+   
     return (
         <>
             <div className="main">

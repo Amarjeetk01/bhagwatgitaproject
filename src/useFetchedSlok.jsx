@@ -2,15 +2,14 @@
 import  { useEffect, useState, useCallback } from "react";
 
 
-const useFetchData = (chapter) => {
+const useFetchSlok = (chapter,sloka) => {
     const [loading, setLoading] = useState(false);
     const [data,setData]=useState(null);
     
       const fetchData = useCallback(async () => {
         
         try {
-          const url= `https://bhagavadgitaapi.in/chapter/${chapter}/`;
-
+          const url= `https://bhagavadgitaapi.in/slok/${chapter}/${sloka}/`;
           const res = await fetch(url);
           const fetchedData= await res.json();
           setData(fetchedData);
@@ -20,19 +19,20 @@ const useFetchData = (chapter) => {
           setLoading(false);
         }
     
-      }, [chapter]);
+      }, [chapter,sloka]);
     
 useEffect(() => {
   fetchData();
 }, [fetchData]);
 
-// console.log(data);
-// console.log(data?.chapter_number);
+console.log(data);
+// console.log(data.slok);
+
 
 return { loading, data, setLoading };
 };
 
-export default useFetchData;
+export default useFetchSlok;
     
     
     
