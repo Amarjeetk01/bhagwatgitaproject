@@ -9,7 +9,7 @@ const useFetchSlok = (chapter,sloka) => {
       const fetchData = useCallback(async () => {
         
         try {
-          const url= `https://bhagavadgitaapi.in/slok/${chapter}/${sloka}/`;
+          const url= `https://vedicscriptures.github.io/slok/${chapter}/${sloka}/`;
           const res = await fetch(url);
           const fetchedData= await res.json();
           setData(fetchedData);
