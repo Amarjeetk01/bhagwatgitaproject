@@ -9,7 +9,7 @@ const useFetchData = (chapter) => {
       const fetchData = useCallback(async () => {
         
         try {
-          const url= `https://bhagavadgitaapi.in/chapter/${chapter}/`;
+          const url= `https://vedicscriptures.github.io/chapter/${chapter}/`;
 
           const res = await fetch(url);
           const fetchedData= await res.json();
